@@ -12,6 +12,7 @@
 $no_ext = "";
 
 include("routes.php");
+include("config.php");
 
 //allows a page to be included into main template
 function getPageContent()
@@ -28,13 +29,16 @@ function getPageContent()
 	if (isset($GLOBALS['route'][$page]))
 		extract($GLOBALS['route'][$page]);
 
-	if (file_exists(VIEW_FOLDER.$page.".php")) 
+	$main_template = MAIN_TEMPLATE;
+	if (isset($GLOBALS['route'][$page]['template']))
+		$main_template = $GLOBALS['route'][$page]['template'];
+
+	if (file_exists(VIEW_FOLDER.$page.".php") && $page.".php" != $main_template)
+
 		include(VIEW_FOLDER.$page.".php");
 	else 
 		include(VIEW_FOLDER."404.php");
 }
-
-include("config.php");
 
 if (ENVIRONMENT == 'dev') {
 	ini_set('display_errors', 'On');
@@ -121,11 +125,11 @@ else {
 	$main_template = MAIN_TEMPLATE;
 
 	//load the route
-	if (isset($route[$page]['template']))
+	if (isset($route[$page]['template'])) {
 		$main_template = $route[$page]['template'];
-
-	unset($route['template']);
-	extract($route[$page]);
+		unset($route['template']);
+		extract($route[$page]);
+	}
 
 	//Away we go... 
 	include(VIEW_FOLDER.$main_template);
