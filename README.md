@@ -87,4 +87,4 @@ const DEPENDENCIES = [
 
 By default Wafer is intended to be run on the server as a semi-dynamic website -- meaning the server compiles your templates & sub-views into an html page each time a page is requested by the client. However it can also be used as a simple static site generator to pre-compile your pages and improve performance.
 
-In config.php, simply set the GENERATE_STATIC constant to TRUE. Now when you visit a page, it will save the compiled page into the '/static' folder as an html file. You can then upload this file to your server as a static page.
+In config.php, simply set the GENERATE_STATIC constant to TRUE. Now when you visit a page, it will compile all project pages into the '/static' folder as an html file. You can then upload these files to your server as a static page.
