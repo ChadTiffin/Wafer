@@ -55,7 +55,6 @@ if (GENERATE_STATIC) {
 	$output_list = "";
 
 	$dir = new DirectoryIterator(VIEW_FOLDER);
-
 	
 	foreach ($dir as $fileinfo) {
 		$filename = $fileinfo->getFilename();
@@ -66,7 +65,8 @@ if (GENERATE_STATIC) {
 			//make sure this is not a template view
 			
 			foreach ($route as $route_page) {
-				if (isset($route_page['template']) || $filename==MAIN_TEMPLATE) {
+				if (isset($route_page['template']) && $route_page['template'] == $filename || $filename==MAIN_TEMPLATE) {
+
 					$skip = true;
 					break;
 				}
@@ -110,7 +110,7 @@ if (GENERATE_STATIC) {
 	}
 	ob_end_clean();
 
-	echo  "<p>Static Pages Generated in /static directory: </p><ul>".$output_list."</ul>";
+	echo "<p>Static Pages Generated in /static directory: </p><ul>".$output_list."</ul>";
 	echo "<p>To turn this off, go to config.php and set GENERATE_STATIC to false</p>";
 }
 else {

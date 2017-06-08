@@ -25,4 +25,4 @@ const ENVIRONMENT = 'dev';
 /**********************************
 * STATIC GENERATOR: Setting this to true will write the static site files into the '/static' folder
 **********************************/
-const GENERATE_STATIC = false;
+const GENERATE_STATIC = true;
