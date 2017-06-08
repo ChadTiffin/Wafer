@@ -6,5 +6,5 @@ $route['index'] = [
 
 $route['subpage'] = [
 	'title' => "Example Subpage",
-	'framework' => "Wafer"
+	'framework' => "Wafer Framework"
 ];
