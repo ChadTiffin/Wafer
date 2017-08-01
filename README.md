@@ -39,6 +39,8 @@ $route['about-us'] = [
 ~~~~
 Wafer will then use 'subpage_template.php' as the main template for that page instead of your default one.
 
+NOTE: You will need to tweak the .htaccess file if you intend to serve static assets (images, etc) from the directory that is serving wafer, as the .htaccess file that ships with wafer rewrites ALL urls (including those pointing to images)
+
 ### Templating
 
 Your main 'template.php' file should contain a php function called getPageContent(). Where you place this function in your template file will determine where the page content get's inserted:
